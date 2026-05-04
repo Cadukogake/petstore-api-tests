@@ -1,0 +1,13 @@
+{
+  "name": "petstore-api-tests",
+  "version": "1.0.0",
+  "description": "Testes automatizados para a API Petstore Swagger",
+  "scripts": {
+    "test": "cypress run",
+    "test:open": "cypress open"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.8.0",
+    "cypress": "^14.3.0"
+  }
+}

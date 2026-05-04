@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\fabri\\\\Documents\\\\Cadu\\\\petstore-api-tests\\\\cypress\" -Recurse -Force)",
+      "Bash(Select-Object FullName)",
+      "Bash(ConvertTo-Json)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\fabri\\\\Documents\\\\Cadu\\\\petstore-api-tests\\\\cypress\" -Recurse -Force | ForEach-Object { $_.FullName })"
+    ]
+  }
+}

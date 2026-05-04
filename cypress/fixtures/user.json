@@ -1,0 +1,7 @@
+{
+  "loginCredentials": {
+    "username": "user1",
+    "password": "password1"
+  },
+  "notFoundUsername": "nonexistent_user_xyz_99999"
+}
