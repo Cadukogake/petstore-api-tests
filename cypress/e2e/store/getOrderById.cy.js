@@ -17,5 +17,13 @@ describe('Store API', () => {
         });
       });
     });
+
+    it('retorna 400 para ID de pedido com valor inválido (fixture)', () => {
+      cy.fixture('order').then(({ invalidId }) => {
+        cy.getOrderById(invalidId).then((res) => {
+          expect(res.status).to.eq(400);
+        });
+      });
+    });
   });
 });

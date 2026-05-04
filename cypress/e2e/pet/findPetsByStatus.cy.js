@@ -14,5 +14,29 @@ describe('Pet API', () => {
         expect(res.status).to.eq(400);
       });
     });
+
+    it('retorna 400 para status vazio', () => {
+      cy.findPetsByStatus('').then((res) => {
+        expect(res.status).to.eq(400);
+      });
+    });
+
+    it('retorna 400 ao buscar com SQL injection no parâmetro status', () => {
+      cy.findPetsByStatus("' OR '1'='1'; --").then((res) => {
+        expect(res.status).to.eq(400);
+      });
+    });
+
+    it('retorna 400 ao buscar com XSS no parâmetro status', () => {
+      cy.findPetsByStatus('<script>alert(1)</script>').then((res) => {
+        expect(res.status).to.eq(400);
+      });
+    });
+
+    it('retorna 400 ao buscar com status de 5000 caracteres', () => {
+      cy.findPetsByStatus('a'.repeat(5000)).then((res) => {
+        expect(res.status).to.eq(400);
+      });
+    });
   });
 });

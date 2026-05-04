@@ -28,4 +28,24 @@ describe('User API', () => {
       });
     });
   });
+
+  context('Segurança - GET /user/{username}', () => {
+    it('não retorna 500 ao buscar usuário com SQL injection no path', () => {
+      cy.getUserByUsername("' OR '1'='1").then((res) => {
+        expect(res.status).to.be.oneOf([400, 404]);
+      });
+    });
+
+    it('não retorna 500 ao buscar usuário com XSS no path', () => {
+      cy.getUserByUsername('<script>alert(1)</script>').then((res) => {
+        expect(res.status).to.be.oneOf([400, 404]);
+      });
+    });
+
+    it('não retorna 500 ao buscar usuário com username de 5000 caracteres', () => {
+      cy.getUserByUsername('a'.repeat(5000)).then((res) => {
+        expect(res.status).to.be.oneOf([400, 404, 414]);
+      });
+    });
+  });
 });

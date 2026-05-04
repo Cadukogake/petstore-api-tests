@@ -17,5 +17,13 @@ describe('Pet API', () => {
         expect(res.status).to.eq(200);
       });
     });
+
+    it('retorna 404 ao atualizar via form pet com ID inexistente (fixture)', () => {
+      cy.fixture('pet').then(({ notFoundId }) => {
+        cy.updatePetWithForm(notFoundId, { name: 'NomeInexistente', status: 'pending' }).then((res) => {
+          expect(res.status).to.eq(404);
+        });
+      });
+    });
   });
 });

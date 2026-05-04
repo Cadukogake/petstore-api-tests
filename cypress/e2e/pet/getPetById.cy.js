@@ -28,5 +28,13 @@ describe('Pet API', () => {
         });
       });
     });
+
+    it('retorna 400 para ID de pet com formato inválido (fixture)', () => {
+      cy.fixture('pet').then(({ invalidId }) => {
+        cy.getPetById(invalidId).then((res) => {
+          expect(res.status).to.eq(400);
+        });
+      });
+    });
   });
 });

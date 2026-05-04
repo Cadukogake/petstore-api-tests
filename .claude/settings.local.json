@@ -4,7 +4,9 @@
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\fabri\\\\Documents\\\\Cadu\\\\petstore-api-tests\\\\cypress\" -Recurse -Force)",
       "Bash(Select-Object FullName)",
       "Bash(ConvertTo-Json)",
-      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\fabri\\\\Documents\\\\Cadu\\\\petstore-api-tests\\\\cypress\" -Recurse -Force | ForEach-Object { $_.FullName })"
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\fabri\\\\Documents\\\\Cadu\\\\petstore-api-tests\\\\cypress\" -Recurse -Force | ForEach-Object { $_.FullName })",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\fabri\\\\Documents\\\\Cadu\\\\petstore-api-tests\" -Recurse)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\fabri\\\\Documents\\\\Cadu\\\\petstore-api-tests\" -Recurse | Select-Object FullName | ForEach-Object { $_.FullName })"
     ]
   }
 }

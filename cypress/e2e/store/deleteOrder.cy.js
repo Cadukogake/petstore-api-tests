@@ -16,5 +16,31 @@ describe('Store API', () => {
         });
       });
     });
+
+    it('retorna 404 para ID de pedido inexistente (fixture)', () => {
+      cy.fixture('order').then(({ notFoundId }) => {
+        cy.deleteOrder(notFoundId).then((res) => {
+          expect(res.status).to.eq(404);
+        });
+      });
+    });
+
+    it('retorna 404 ao tentar deletar o mesmo pedido duas vezes', () => {
+      cy.createOrder().then((createRes) => {
+        const orderId = createRes.body.id;
+        cy.deleteOrder(orderId).then((first) => {
+          expect(first.status).to.be.oneOf([200, 404]);
+        });
+        cy.deleteOrder(orderId).then((second) => {
+          expect(second.status).to.eq(404);
+        });
+      });
+    });
+
+    it('não retorna 500 ao deletar pedido com SQL injection no path', () => {
+      cy.deleteOrder("'; DROP TABLE orders; --").then((res) => {
+        expect(res.status).to.be.oneOf([400, 404]);
+      });
+    });
   });
 });

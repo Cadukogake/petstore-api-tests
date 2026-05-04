@@ -19,5 +19,13 @@ describe('Pet API', () => {
         expect(res.body).to.have.property('message');
       });
     });
+
+    it('retorna 404 ao tentar upload para pet inexistente (fixture)', () => {
+      cy.fixture('pet').then(({ notFoundId }) => {
+        cy.uploadPetFile(notFoundId, { additionalMetadata: 'metadata' }).then((res) => {
+          expect(res.status).to.eq(404);
+        });
+      });
+    });
   });
 });
