@@ -70,7 +70,15 @@ Cypress.Commands.add('updatePetWithForm', (petId, formData = {}) => {
   });
 });
 
-Cypress.Commands.add('uploadPetFile', (petId, formData = {}) => {
+Cypress.Commands.add('uploadPetFile', (petId, formData = {}, filePath = null) => {
+  if (filePath) {
+    return cy.task('uploadPetFileWithImage', {
+      baseUrl: Cypress.env('BASE_URL'),
+      petId,
+      filePath,
+      additionalMetadata: formData.additionalMetadata
+    });
+  }
   return cy.request({
     method: 'POST',
     url: `${baseUrl()}/pet/${petId}/uploadFile`,

@@ -12,8 +12,8 @@ describe('Pet API', () => {
       cy.deletePet(petId);
     });
 
-    it('envia metadata adicional e retorna 200 com ApiResponse', () => {
-      cy.uploadPetFile(petId, { additionalMetadata: 'metadata de teste' }).then((res) => {
+    it('faz upload de imagem real com metadata e retorna 200 com ApiResponse', () => {
+      cy.uploadPetFile(petId, { additionalMetadata: 'metadata de teste' }, 'cypress_logo_social.png').then((res) => {
         expect(res.status).to.eq(200);
         expect(res.body).to.have.property('code');
         expect(res.body).to.have.property('message');

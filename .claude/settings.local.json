@@ -6,7 +6,16 @@
       "Bash(ConvertTo-Json)",
       "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\fabri\\\\Documents\\\\Cadu\\\\petstore-api-tests\\\\cypress\" -Recurse -Force | ForEach-Object { $_.FullName })",
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\fabri\\\\Documents\\\\Cadu\\\\petstore-api-tests\" -Recurse)",
-      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\fabri\\\\Documents\\\\Cadu\\\\petstore-api-tests\" -Recurse | Select-Object FullName | ForEach-Object { $_.FullName })"
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\fabri\\\\Documents\\\\Cadu\\\\petstore-api-tests\" -Recurse | Select-Object FullName | ForEach-Object { $_.FullName })",
+      "Bash(Select-Object -First 50)",
+      "Bash(Format-Table -Property FullName, PSIsContainer)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\fabri\\\\Documents\\\\Cadu\\\\petstore-api-tests\\\\cypress\\\\e2e\" -Recurse)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\fabri\\\\Documents\\\\Cadu\\\\petstore-api-tests\\\\cypress\\\\e2e\" -Recurse | Where-Object { -not $_.PSIsContainer } | Select-Object FullName)",
+      "PowerShell(cmd /c \"dir /s C:\\\\Users\\\\fabri\\\\Documents\\\\Cadu\\\\petstore-api-tests\\\\cypress\\\\e2e\")",
+      "Bash(npm install *)",
+      "Bash(Test-Path C:\\\\Users\\\\fabri\\\\Documents\\\\Cadu\\\\petstore-api-tests\\\\node_modules\\\\md-to-pdf *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
